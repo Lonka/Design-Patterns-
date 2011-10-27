@@ -1,0 +1,167 @@
+---------------------------------------------------------------------------
+Folder:DesignPatternInterduction
+即策略模式(Strategy Pattern)
+[定義了演算法家族（即Implement的class），個別封裝起來，讓它們之間可以互相替
+換，此模式讓演算法的變動，不會影響到使用演算法的程式。]
+==
+將behavior寫成各各分開的類別並Implement同一個interface，在要用到的主類別中開
+個該interface的屬性，這樣在實體化該主類別時便可以在建構式中動態加入behavior
+類別。
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:ObserverPattern
+即觀察者模式(Observer Pattern)
+[定義了物件之間的一對多關系，如此一來，當一個物件改變狀態，其他相依者都會收
+到通知並自動被更新。]
+==
+在主subject的類別中implement isubject，其中包含register and remove iobserver
+和notify Observer。並讓所有observer的類別implement iobserver,其中包含update，
+這樣便可在實體化subject時便register observer，在適當的時後便可呼叫subject的
+notify，同步更新所有observer。
+==
+-----------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:DecoratorPattern
+裝飾者模式(Decorator Pattern)
+動態地將責任加諸於物件上。若要擴充功能，裝飾者提供了比繼承更有彈性的選擇。
+==
+很像遞迴的感覺，先開一個大家都要繼承(Inherit)的主體抽象類別(abstract class)
+然後被裝飾者inherit它，裝飾者inherit它(裝飾者如有別的別的方法必需implement
+時可以先開一個裝飾者的abstract class inherit 主體的abstract class 再讓所有
+裝飾者inherit裝飾者的abstract class，這樣所有裝飾者也等於繼承了主體且可以
+implement裝飾者的方法)，之後每個裝飾者都必需記著上一層的裝飾結果，以便層層
+往回找，且每個裝飾著override主體abstract class的方法，這樣在最外層呼叫主體
+的方法時便會層層找進去再將結果層層傳出來。
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:FactoryPattern
+工廠模式(Factory Pattern)
+定義了一個建立物件的介面，但由次類別決定要實體化的類別為何者。工廠方法讓類
+別把實體化的動作，交由次類別進行。
+==
+其實它主要是為了去除程式中重覆無義的Switch or If，所以會把這此判斷式移到一個
+類別做，如果只是一個Concrete Creator那只需要一個類別便可搞定，故為「簡單工廠
+模式」;但有多個Concrete Creator時便需要建立一個抽象類別讓Concrete Creator
+Inherit它，這樣便可由次類別決定要實體化的類別。(FactoryPattern->OrderPizza.aspx.cs有說明)
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:FactoryPattern->FactoryInterface
+抽象工廠模式(Abstract Factory Pattern)
+提供了一個介面，建立相關或相依物件之家族，而不需明確指定具象類別。
+==
+我一直覺得這個就是把策略模式(Strategy Pattern)強化，在Strategy Pattern中便只
+做到Dough or Sauce folder中的做法，而Abstract Factory Pattern中便是再用一個介
+包起來Dough and Sauce(IPizzaIngredientFactory)，再建立兩個實作該介面的工廠，
+這樣就可以直接使用該工廠傳出相對應的類別。
+==
+(FactoryPattern->OrderPizza.aspx.cs
+ FactoryPattern->ConcreteProduct->GreekPizzaNY有說明)
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:SingletonPattern
+獨體模式(Singleton Pattern)
+確保一個類別只有一個實體，並提供全域點存取此實體。
+==
+直接看SingletonPattern->SingletonPatternPate1.aspx.cs 跟 
+SingletonPattern->Singleton.cs中的寫法比較快
+比較有趣的是原來可以讓class的建構式是private這樣就只能由自己實體化自己
+再建立一個static方法實體化該類別，這樣就可以讓該類別呼叫static方法實體
+化方法，並確保不會有多個實體。
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:CommandPattern
+命令模式(Command Pattern)
+將請求封裝成物件，這可以讓你使用不同的請求、佇列、或者日誌，來參數化其他
+物件。命令模式也可以支復原操作。
+==
+命令模式就是為了讓「請求物件(like:Light)」和「執行請求(Execute)」之間鬆綁
+將每個動作拆成一個個的命令(like:LightOnCommand)並Implment ICommand 中的
+Execute，並讓調用者(invoker:SimpleRemoteControl)去記錄每個ICommand，在調用
+執行方法時，將每個記錄的ICommand執行Execute這樣接收者(Receiver)便不需要知道
+調用了那些命令，只需要執行已存命令。
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:AdapterPattern
+轉接器模式(Adapter Pattern)
+將一個類別的介面，轉換成另一個介面以供客戶使用。轉接器讓原本介面不相容的類別
+可以合作無間。
+==
+轉接器模式，簡單來說透過轉接器可以讓使用者感覺不出兩個類別的差異，在folder的
+例子中IDuck跟ITurkey是完全不相同的類別(介面)，但轉接器(TurkeyAdapter)可以讓
+使用者建置Turkey但使用的是Duck的方法，做法也很簡單，讓轉接器(TurkeyAdapter)
+Implement IDuck的方法，並在初使建構式中就載入ITurkey的類別且記錄著，這樣就可
+以在IDuck的方法中直接調用ITurkey的方法，而使用者也只感覺到是使用IDuck的方法。
+==
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Folder:FacadePattern
+表象模式(Facade Pattern)
+提供了一個統一的介面，用來存取次系統中的一群介面。表象定義了一個較高層次的介
+面，讓次系統更容易使用。
+==
+表象模式真的還蠻簡單的，其實就是做一件事如果需要動用到很多類別時並調用很多該
+類別的方法時，最好建立一個表象，即統一的介面，讓該介面提供一個方法並在該方法
+中調動原本應該做的事，這樣就可以該使用者只需要跟表象溝通並調用表象中的一個方
+法即可。
+==
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Folder:TemplatePattern
+樣板模式(Template Pattern)
+將一個演算法的骨架定義在一個方法中，而演算法本身會用到的一些方法，則是定義在
+次類別中。樣板方法讓次類別在不改變演算法架構的情況下，重新定義演算法中的某些
+步驟。
+==
+樣板模式也是很簡單也實用的模式，就是在super abstract class 中定義一個algorithm
+(演算法)而algorithm中的一些需要由次class決定的method定義成abstract讓次class
+去override，這樣就可以讓同一個algorithm因不同的concrete class而實作出不同的結果
+，當然！如果要由concrete class改變algorithm可以在algorithm中加入hook，並在
+super abstract class中加入一個virturl hook，讓concrete class可以決定是否要override
+ hook。
+==
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Folder:IteratorPattern
+反覆器模式(Iterrator Pattern)
+讓我們能夠取得一個聚集內的每一個元素，而不需要此聚集將其實踐方式暴露出來。
+==
+實現每一種集合的反覆器，讓使用都可以直接對反覆器去取集合的值而不需要知道是對什
+麼集合取值。用法便是針對要回傳集合的class去實現每一個的反覆器並實作反覆器的介面(
+IteratorPattern->Iterator->IteratorImpl->以下的兩個反覆器class)，讓介面包含hasNext
+和Next方法(當然如果要往前找就再新增往前的方法) ，再讓每一個要回傳集合的類別去實作
+方法Return Iterator Interface，這樣在使用時便可以呼叫每一個集合類別，並取得該類別
+的反覆器，這樣便可針對反覆器的hasNext跟Next去取值而不需要知道集合的類型。
+==
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Folder:CompositePattern
+合成模式(Composite Pattern)
+允許你將物件合成樹狀的結構，用來呈現「部份/整體」的階層關系。利用合成，客戶程式碼能
+夠一視同仁地對待個別的物件以及物件合成的結果。
+==
+合成模式即開發一個abstract class，該類別包含leaf node和composite node所需要的方法，
+然後讓兩種node都去inherit並implement它，然後讓composite node去implement add、remove
+等方法並用一個list去記錄add的class，讓leaf去implement print等方法，最後用iterator
+就可以讓結果印出來。
+合成反覆器，這個比較難懂，直接看程式碼會比較好懂CompositePattern->ComponentTest.aspx.cs
+==
+---------------------------------------------------------------------------
