@@ -63,6 +63,7 @@
     <Content Include="SingletonPattern\SingletonPatternPage1.aspx" />
     <Content Include="SingletonPattern\SingletonPatternPage2.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="StatusPattern\GumballMachineTest.aspx" />
     <Content Include="TemplatePattern\TemplateTest.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -238,6 +239,21 @@
     <Compile Include="SingletonPattern\SingletonPatternPage2.aspx.designer.cs">
       <DependentUpon>SingletonPatternPage2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StatusPattern\GumballMachine.cs" />
+    <Compile Include="StatusPattern\GumballMachineTest.aspx.cs">
+      <DependentUpon>GumballMachineTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatusPattern\GumballMachineTest.aspx.designer.cs">
+      <DependentUpon>GumballMachineTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatusPattern\HasQuarterState.cs" />
+    <Compile Include="StatusPattern\IStatus.cs" />
+    <Compile Include="StatusPattern\NoQuarterState.cs" />
+    <Compile Include="StatusPattern\SoldOutState.cs" />
+    <Compile Include="StatusPattern\SoldState.cs" />
+    <Compile Include="StatusPattern\SuperState.cs" />
+    <Compile Include="StatusPattern\WinnerSoldState.cs" />
     <Compile Include="TemplatePattern\CaffeineBeverage.cs" />
     <Compile Include="TemplatePattern\Coffee.cs" />
     <Compile Include="TemplatePattern\Tea.cs" />
