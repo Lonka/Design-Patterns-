@@ -3,3 +3,4 @@ E:\Projects\DesignPatterns\DesignPatterns\bin\DesignPatterns.dll
 E:\Projects\DesignPatterns\DesignPatterns\bin\DesignPatterns.pdb
 E:\Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.dll
 E:\Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.pdb
+E:\Projects\DesignPatterns\DesignPatterns\bin\RemoteService.dll

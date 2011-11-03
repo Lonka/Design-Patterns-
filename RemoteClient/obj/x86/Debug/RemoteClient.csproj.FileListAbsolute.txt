@@ -1,0 +1,5 @@
+E:\Projects\DesignPatterns\RemoteClient\bin\Debug\RemoteClient.exe
+E:\Projects\DesignPatterns\RemoteClient\bin\Debug\RemoteClient.pdb
+E:\Projects\DesignPatterns\RemoteClient\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Projects\DesignPatterns\RemoteClient\obj\x86\Debug\RemoteClient.exe
+E:\Projects\DesignPatterns\RemoteClient\obj\x86\Debug\RemoteClient.pdb

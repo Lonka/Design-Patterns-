@@ -1,0 +1,5 @@
+E:\Projects\DesignPatterns\RemoteService\bin\Debug\RemoteService.dll
+E:\Projects\DesignPatterns\RemoteService\bin\Debug\RemoteService.pdb
+E:\Projects\DesignPatterns\RemoteService\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\DesignPatterns\RemoteService\obj\Debug\RemoteService.dll
+E:\Projects\DesignPatterns\RemoteService\obj\Debug\RemoteService.pdb

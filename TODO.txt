@@ -1,0 +1,4 @@
+http://yilinliu.blogspot.com/2010/08/c-net-remoting-interface.html
+http://www.dotblogs.com.tw/pin0513/archive/2011/01/19/20886.aspx
+
+代理人模式  還在測試
